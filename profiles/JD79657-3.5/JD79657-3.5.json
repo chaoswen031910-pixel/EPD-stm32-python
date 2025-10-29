@@ -1,5 +1,5 @@
 {
-    "ic_name": "JD79651-3.5",
+    "ic_name": "JD79657-3.5",
     "resolution": {
         "width": 184,
         "height": 384
@@ -9,9 +9,26 @@
     "lut_source_file": "lut_master.txt",
     "lut_format": "IC_6x7",
     "luts": {
-        "Default GC": "lut_full_update",
-        "Default DU": "lut_partial_update",
-        "4GRAY": "lut_4GRAY_update"
+        "4gray": {
+            "variable": "lut_4GRAY_update",
+            "mode": "4gray"
+        },
+        "DU": {
+            "variable": "lut_DU_210bytes",
+            "mode": "partial"
+        },
+        "du40": {
+            "variable": "lut_du40_210bytes",
+            "mode": "partial"
+        },
+        "GC300ms": {
+            "variable": "lut_GC300ms_210bytes",
+            "mode": "gc"
+        },
+        "dunew": {
+            "variable": "lut_dunew_210bytes",
+            "mode": "partial"
+        }
     },
     "init_script": "init.txt",
     "scripts": {
@@ -19,6 +36,7 @@
         "sleep": "sleep.txt",
         "update_lut": "lut_update.txt",
         "display_full_gc": "update_gc.txt",
+        "display_partial": "update_partial.txt",
         "display_4gray": "update_4gray.txt"
     }
 }

@@ -8,9 +8,30 @@
     "lut_source_file": "lut_master.txt",
     "lut_format": "IC_7x6",
     "luts": {
-        "Default GC": "lut_full_update",
-        "Default DU": "lut_partial_update",
-        "Default 4gray": "lut_4gray_update"
+        "GC": {
+            "variable": "lut_full_update",
+            "mode": "gc"
+        },
+        "DU": {
+            "variable": "DU",
+            "mode": "partial"
+        },
+        "4gray150ms": {
+            "variable": "lut_4gray150ms_210bytes",
+            "mode": "4gray"
+        },
+        "4gray180ms": {
+            "variable": "lut_4gray180ms_210bytes",
+            "mode": "4gray"
+        },
+        "NoBanlanceDU": {
+            "variable": "lut_NoBanlanceDU_210bytes",
+            "mode": "partial"
+        },
+        "NoBanlanceGC": {
+            "variable": "lut_NoBanlanceGC_210bytes",
+            "mode": "gc"
+        }
     },
     "init_script": "init.txt",
     "scripts": {
