@@ -1,0 +1,25 @@
+# 全局刷新脚本 (SSD1677)
+# 该脚本严格按照 C 语言版本的 dis_all 函数逻辑编写
+# 并使用项目已定义的脚本语法
+
+# 步骤 1: 设置RAM X地址指针
+CMD 0x4E
+DATA 0x00
+
+# 步骤 2: 设置RAM Y地址指针
+CMD 0x4F
+DATA 0x00 0x00
+
+# 步骤 3: 发送“写RAM”指令
+CMD 0x24
+
+# 步骤 4: 数据注入点
+# 上位机程序将在此处发送图像数据
+SEND_IMAGE_DATA
+
+# 步骤 5 & 6: 触发屏幕物理刷新
+CMD 0x22
+DATA 0xF7
+
+CMD 0x20
+WAIT_BUSY_SSD

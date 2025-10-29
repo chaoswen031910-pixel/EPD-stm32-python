@@ -1,0 +1,16 @@
+
+# 2. 写入新的图像数据 (前置命令: 0x24)
+CMD 0x24
+SEND_IMAGE_DATA
+
+
+# 3. 写入旧的图像数据 (前置命令: 0x26)
+CMD 0x26
+SEND_IMAGE_DATA
+
+CMD 0x22
+DATA 0xD7
+
+# 4. 触发刷新
+CMD 0x20
+WAIT_BUSY_SSD 

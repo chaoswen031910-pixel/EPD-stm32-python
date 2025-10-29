@@ -1,0 +1,24 @@
+{
+    "ic_name": "UC8179-7.5",
+    "resolution": {
+        "width": 800,
+        "height": 480
+    },
+    "inch": "7.5",
+    "lut_source_file": "lut_master.txt",
+    "lut_format": "IC_7x6",
+    "luts": {
+        "Default GC": "lut_full_update",
+        "Default DU": "lut_partial_update",
+        "Default 4gray": "lut_4gray_update"
+    },
+    "init_script": "init.txt",
+    "scripts": {
+        "reset": "reset.txt",
+        "sleep": "sleep.txt",
+        "update_lut": "lut_update.txt",
+        "display_full_gc": "update_gc.txt",
+        "display_partial_du": "update_du.txt",
+        "display_4gray": "update_4gray.txt"
+    }
+}

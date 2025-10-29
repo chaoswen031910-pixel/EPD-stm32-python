@@ -1,0 +1,50 @@
+# Script: 4gray_init.txt
+# Profile: SSD1677
+# Description: Initialization sequence for 4-grayscale display mode.
+
+# 1. Software Reset
+CMD 0x12
+WAIT_BUSY_SSD
+
+# 2. Booster soft start control
+CMD 0x0C
+DATA 0xAE, 0xC7, 0xC3, 0xC0, 0x80
+
+# 3. Driver output control (Height: 250)
+CMD 0x01
+DATA 0xDF 0x01 0x02 # 249 = 0x00F9
+
+# 4. Data entry mode
+CMD 0x11
+DATA 0x01
+
+CMD 0x44
+DATA 0x00 0x00
+DATA 0x1F 0x03       # Width: 800-1=799 -> 0x031F
+
+CMD 0x45
+DATA 0xDF 0x01       # Height: 480-1 -> 0x01DF
+DATA 0x00 0x00
+
+# 7. Set RAM X address counter
+CMD 0x4E
+DATA 0x00
+
+# 8. Set RAM Y address counter
+CMD 0x4F
+DATA 0x00, 0x00
+
+# Wait for busy after setting pointers
+WAIT_BUSY_SSD
+
+# 9. Border Waveform Control
+CMD 0x3C
+DATA 0x03
+
+# 10. Temperature Sensor Control
+CMD 0x18
+DATA 0x80
+
+# 11. VCOM and data interval setting (For 4-Gray)
+CMD 0x1A
+DATA 0x5A

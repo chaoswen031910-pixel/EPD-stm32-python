@@ -1,0 +1,23 @@
+{
+    "ic_name": "UC8251-2.66",
+    "resolution": {
+        "width": 152,
+        "height": 296
+    },
+    "inch": "2.66",
+    "lut_source_file": "lut_master.txt",
+    "lut_format": "IC_7x8",
+    "luts": {
+        "Default GC": "lut_full_update",
+        "Default DU": "lut_partial_update"
+    },
+    "init_script": "init.txt",
+    "scripts": {
+        "reset": "reset.txt",
+        "sleep": "sleep.txt",
+        "update_lut": "lut_update.txt",
+        "display_full_gc": "update_gc.txt",
+        "display_partial_du": "update_du.txt",
+        "display_4gray": "update_4gray.txt"
+    }
+}

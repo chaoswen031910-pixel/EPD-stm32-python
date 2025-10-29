@@ -1,0 +1,24 @@
+{
+    "ic_name": "JD79651-3.5",
+    "resolution": {
+        "width": 184,
+        "height": 384
+    },
+    "inch": "3.5",
+    "editor_type": "Generator_5x42",
+    "lut_source_file": "lut_master.txt",
+    "lut_format": "IC_6x7",
+    "luts": {
+        "Default GC": "lut_full_update",
+        "Default DU": "lut_partial_update",
+        "4GRAY": "lut_4GRAY_update"
+    },
+    "init_script": "init.txt",
+    "scripts": {
+        "reset": "reset.txt",
+        "sleep": "sleep.txt",
+        "update_lut": "lut_update.txt",
+        "display_full_gc": "update_gc.txt",
+        "display_4gray": "update_4gray.txt"
+    }
+}

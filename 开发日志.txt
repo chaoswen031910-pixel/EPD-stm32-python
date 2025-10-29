@@ -1,0 +1,2 @@
+pyinstaller --onefile --windowed --add-data "profiles;profiles" main.py
+pyinstaller main.spec

@@ -1,0 +1,18 @@
+# UC8251D 全局刷新脚本 (新增延时诊断版)
+
+
+# 2. 发送“写RAM”指令
+CMD 0x13
+
+# 3. 数据注入点
+SEND_IMAGE_DATA
+
+# 5. 触发屏幕物理刷新
+CMD 0x04 # Power On
+WAIT_BUSY
+
+CMD 0x12 # Display Refresh
+WAIT_BUSY # 然后再检查忙状态
+
+CMD 0x02 # Power Off
+WAIT_BUSY

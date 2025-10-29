@@ -1,0 +1,28 @@
+{
+    "ic_name": "UC8179-3.87",
+    "resolution": {
+        "width": 800,
+        "height": 540
+    },
+    "inch": "3.87",
+    "lut_source_file": "lut_master.txt",
+    "lut_format": "IC_7x6",
+    "luts": {
+        "Default GC": "lut_full_update",
+        "Default DU": "lut_partial_update",
+        "4gray150ms": "lut_4gray150ms_210bytes",
+        "4gray180ms": "lut_4gray180ms_210bytes",
+        "DU": "DU",
+        "NoBanlanceDU": "lut_NoBanlanceDU_210bytes",
+        "NoBanlanceGC": "lut_NoBanlanceGC_210bytes"
+    },
+    "init_script": "init.txt",
+    "scripts": {
+        "reset": "reset.txt",
+        "sleep": "sleep.txt",
+        "update_lut": "lut_update.txt",
+        "display_full_gc": "update_gc.txt",
+        "display_partial_du": "update_du.txt",
+        "display_4gray": "update_4gray.txt"
+    }
+}

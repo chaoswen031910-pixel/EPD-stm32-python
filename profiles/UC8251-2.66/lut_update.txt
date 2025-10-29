@@ -1,0 +1,21 @@
+# UC8251D Lut波形更新脚本
+
+# 1. 加载VCOM波形 (lutc), 56字节
+CMD 0x20
+SEND_LUT_DATA_CHUNK 0 55
+
+# 2. 加载White to White波形 (lutww), 42字节
+CMD 0x24
+SEND_LUT_DATA_CHUNK 56 111
+
+# 3. 加载Black to White波形 (lutbw), 42字节
+CMD 0x23
+SEND_LUT_DATA_CHUNK 112 167
+
+# 4. 加载White to Black波形 (lutwb), 42字节
+CMD 0x22
+SEND_LUT_DATA_CHUNK 168 223
+
+# 5. 加载Black to Black波形 (lutbb), 42字节
+CMD 0x21
+SEND_LUT_DATA_CHUNK 224 279

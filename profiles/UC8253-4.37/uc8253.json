@@ -1,0 +1,22 @@
+{
+    "ic_name": "UC8253-4.37",
+    "resolution": {
+        "width": 176,
+        "height": 480
+    },
+    "inch": "4.37",
+    "editor_type": "Generator_5x42",
+    "lut_source_file": "lut_master.txt",
+    "lut_format": "IC_6x7",
+    "luts": {
+        "Default GC": "lut_full_update",
+        "Default DU": "lut_partial_update"
+    },
+    "init_script": "init.txt",
+    "scripts": {
+        "reset": "reset.txt",
+        "sleep": "sleep.txt",
+        "update_lut": "lut_update.txt",
+        "display_full_gc": "update_gc.txt"
+    }
+}
