@@ -1,0 +1,3 @@
+2025-m-d 16:13:46.657 - --- DEBUG: User profiles directory (target): C:\Users\Chaos\Desktop\python\stm32Py\profiles
+2025-m-d 16:13:46.657 - --- DEBUG: Is default path? True
+2025-m-d 16:13:46.657 - --- DEBUG: User profiles directory found. Loading...

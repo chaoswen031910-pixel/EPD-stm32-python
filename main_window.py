@@ -335,13 +335,13 @@ def get_base_path():
     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
         # 如果是打包后的环境 (PyInstaller)
         base_path = os.path.dirname(sys.executable)
-        print(f"--- DEBUG: Running in bundled mode. sys.executable: {sys.executable}") # 调试信息
+        #print(f"--- DEBUG: Running in bundled mode. sys.executable: {sys.executable}") # 调试信息
     else:
         # 如果是开发环境 (直接运行 .py)
         base_path = os.path.dirname(os.path.abspath(__file__))
-        print(f"--- DEBUG: Running in development mode. __file__: {__file__}") # 调试信息
+        #print(f"--- DEBUG: Running in development mode. __file__: {__file__}") # 调试信息
         
-    print(f"--- DEBUG: get_base_path() determined base_path: {base_path}") # 调试信息
+    #print(f"--- DEBUG: get_base_path() determined base_path: {base_path}") # 调试信息
     return base_path
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -1609,34 +1609,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # 1. 获取路径 (utils 会自动返回自定义路径或默认路径)
         user_profiles_dir = utils.get_user_data_path("profiles")
-        utils.log_message(f"--- DEBUG: User profiles directory (target): {user_profiles_dir}")
+        #utils.log_message(f"--- DEBUG: User profiles directory (target): {user_profiles_dir}")
 
         # 2. 检查这个路径是否是“默认路径”
         default_path = os.path.join(utils.get_app_base_path(), "profiles")
         is_default_path = (os.path.normpath(user_profiles_dir) == os.path.normpath(default_path))
-        utils.log_message(f"--- DEBUG: Is default path? {is_default_path}")
+        #utils.log_message(f"--- DEBUG: Is default path? {is_default_path}")
 
         # 3. 检查路径是否存在
         if not os.path.exists(user_profiles_dir):
-            utils.log_message(f"--- DEBUG: User profiles not found at target path.")
+            #utils.log_message(f"--- DEBUG: User profiles not found at target path.")
             
             if is_default_path:
                 # --- 情况A：默认路径 且 首次运行 ---
                 # 这是我们的“解压”逻辑
-                utils.log_message(f"--- DEBUG: Attempting first-run extraction to default path...")
+                #utils.log_message(f"--- DEBUG: Attempting first-run extraction to default path...")
                 try:
                     bundle_profiles_dir = utils.get_bundle_path("profiles")
-                    utils.log_message(f"--- DEBUG: Bundled profiles (source): {bundle_profiles_dir}")
+                    #utils.log_message(f"--- DEBUG: Bundled profiles (source): {bundle_profiles_dir}")
                     
                     if not os.path.exists(bundle_profiles_dir):
-                        utils.log_message(f"--- DEBUG: FATAL - Bundled profiles not found at source!")
+                        #utils.log_message(f"--- DEBUG: FATAL - Bundled profiles not found at source!")
                         self.log_to_textarea("[ERROR] 找不到内置Profiles, 无法初始化。")
                         self._build_profile_menu()
                         return
 
                     # 执行复制
                     shutil.copytree(bundle_profiles_dir, user_profiles_dir)
-                    utils.log_message(f"--- DEBUG: Successfully extracted profiles to user directory.")
+                    #utils.log_message(f"--- DEBUG: Successfully extracted profiles to user directory.")
                     
                     # 提示用户重启
                     QMessageBox.information(self, 
@@ -1647,7 +1647,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     sys.exit(0) # 安全退出
                     
                 except Exception as e:
-                    utils.log_message(f"--- DEBUG: FATAL - Failed to extract profiles: {e}")
+                    #utils.log_message(f"--- DEBUG: FATAL - Failed to extract profiles: {e}")
                     self.log_to_textarea(f"[ERROR] 提取Profiles失败: {e}")
                     self._build_profile_menu()
                 return # 退出函数
@@ -1655,7 +1655,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 # --- 情况B：自定义路径 且 路径不存在 ---
                 # 用户设置了一个无效的自定义路径
-                utils.log_message(f"--- DEBUG: Custom path does not exist.")
+                #utils.log_message(f"--- DEBUG: Custom path does not exist.")
                 self.log_to_textarea(f"[ERROR] 自定义路径不存在: {user_profiles_dir}")
                 QMessageBox.warning(self,
                     "路径错误",
@@ -1665,7 +1665,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 return # 退出函数
 
         # --- 情况C：路径存在 (无论是自定义的还是默认的) ---
-        utils.log_message(f"--- DEBUG: User profiles directory found. Loading...")
+        #utils.log_message(f"--- DEBUG: User profiles directory found. Loading...")
         
         # 4. (所有情况) 从 *用户* 路径加载
         self.profiles_dir = user_profiles_dir
