@@ -8,10 +8,22 @@
     "lut_format": "IC_SSD1677",
     "lut_source_file": "lut_master.txt",
     "luts": {
-        "GC (全局刷新)": "GC_W150_B250",
-        "DU (局部刷新)": "DU_300ms",
-        "4灰阶全刷": "gray4",
-        "300ms4Gray": "lut_300ms4Gray_112bytes"
+        "GC_W150_B250": {
+            "variable": "GC_W150_B250",
+            "mode": "gc"
+        },
+        "DU_300ms": {
+            "variable": "DU_300ms",
+            "mode": "partial"
+        },
+        "gray4": {
+            "variable": "lut_4GRAY_update",
+            "mode": "4gray"
+        },
+        "300ms4Gray": {
+            "variable": "lut_300ms4Gray_112bytes",
+            "mode": "4gray"
+        }
     },
     "lut_structure": {
         "Main LUT": [
@@ -41,6 +53,7 @@
         "update_lut": "lut_update.txt",
         "display_full_gc": "update_gc.txt",
         "display_4gray": "update_4gray.txt",
+        "display_partial": "update_partial.txt",
         "init_4gray": "4gray_init.txt"
     },
     "flows": {
