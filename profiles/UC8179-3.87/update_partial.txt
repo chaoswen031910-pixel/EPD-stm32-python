@@ -8,11 +8,7 @@ CMD 0x13
 # 3. 数据注入点
 SEND_IMAGE_DATA
 
-# 2. 发送“写 OLD RAM”指令
-CMD 0x10
 
-# 3. 数据注入点
-SEND_IMAGE_DATA
 
 # 5. 触发屏幕物理刷新
 CMD 0x04 # Power On

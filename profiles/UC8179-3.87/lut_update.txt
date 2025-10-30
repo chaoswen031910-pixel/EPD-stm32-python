@@ -4,7 +4,7 @@
 CMD 0x20
 SEND_LUT_DATA_CHUNK 0 42
 
-# 2. 加载White to White波形 (lutww), 42字节
+# 2. 加载White to White波形 (lutbb), 42字节
 CMD 0x24
 SEND_LUT_DATA_CHUNK 42 84
 

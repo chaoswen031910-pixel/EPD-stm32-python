@@ -1,12 +1,5 @@
 # JD79650 全局刷新脚本 (新增延时诊断版)
 
-# 1. 启用窗口模式
-CMD 0x91
-CMD 0x90
-DATA 0x00 0xC7
-DATA 0x00 0xC7
-DATA 0x01
-
 # 2. 发送“写RAM”指令
 CMD 0x13
 
@@ -19,9 +12,6 @@ CMD 0x10
 # 3. 数据注入点
 SEND_IMAGE_DATA
 
-# 4. 关闭窗口模式
-CMD 0x92
-WAIT_BUSY
 
 # 5. 触发屏幕物理刷新
 CMD 0x04 # Power On
