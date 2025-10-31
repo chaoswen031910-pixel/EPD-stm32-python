@@ -21,6 +21,7 @@ import utils
 
 from workers.display_worker import DisplayWorker  # <-- [ 新增 ] 导入我们刚创建的类
 from workers.multi_image_worker import MultiImageDisplayWorker # <-- [ 新增 ] 导入新类
+from workers.lut_update_worker import LutUpdateWorker # <-- [ 新增 ] 导入新类
 
 
 class CodeGenOptionsDialog(QtWidgets.QDialog):
@@ -58,15 +59,6 @@ class CodeGenOptionsDialog(QtWidgets.QDialog):
     def get_selected_parts(self):
         return [key for key, checkbox in self.options.items() if checkbox.isChecked()]
 
-
-class LutUpdateWorker(QObject):
-    finished = pyqtSignal()
-    def __init__(self, serial_worker, script_path, lut_data):
-        super().__init__(); self.serial_worker = serial_worker; self.script_path = script_path; self.lut_data = lut_data; self.is_running = True; self.executor = ScriptExecutor(self.serial_worker)
-    def run(self):
-        if hasattr(self.parent(), 'log_to_textarea'): self.executor.log_message.connect(self.parent().log_to_textarea)
-        self.executor.run_script(self.script_path, self.lut_data); self.finished.emit()
-    def stop(self): self.is_running = False; self.executor.stop_all_tasks()
 
 class DeviceScanner(QObject):
     device_found = pyqtSignal(str, list)
