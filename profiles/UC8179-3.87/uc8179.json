@@ -31,6 +31,10 @@
         "NoBanlanceGC": {
             "variable": "lut_NoBanlanceGC_210bytes",
             "mode": "gc"
+        },
+        "testDU": {
+            "variable": "lut_testDU_210bytes",
+            "mode": "gc"
         }
     },
     "init_script": "init.txt",
@@ -39,7 +43,7 @@
         "sleep": "sleep.txt",
         "update_lut": "lut_update.txt",
         "display_full_gc": "update_gc.txt",
-        "display_partial": "update_partial.txt",
+        "display_partial": "update_gc.txt",
         "display_4gray": "update_4gray.txt"
     }
 }

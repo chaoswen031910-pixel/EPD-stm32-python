@@ -35,6 +35,7 @@
         "reset": "reset.txt",
         "sleep": "sleep.txt",
         "update_lut": "lut_update.txt",
+        "display_partial": "update_partial.txt",
         "display_full_gc": "update_gc.txt"
     }
 }
