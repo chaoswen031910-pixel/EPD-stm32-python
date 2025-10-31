@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from ui_components import FrameInput, ColorBlockWidget 
+from .ui_components import FrameInput, ColorBlockWidget 
 
 class BaseLutFormatHandler:
     """

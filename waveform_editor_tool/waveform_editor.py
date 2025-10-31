@@ -5,8 +5,11 @@ import re
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import pyqtSignal
 
+
 # 假设这些模块在您的项目中是可用的
-from lut_formats import get_lut_handler
+from .lut_formats import get_lut_handler
+
+
 
 # --- [ 新增辅助类 开始 ] ---
 class SaveWaveformDialog(QtWidgets.QDialog):

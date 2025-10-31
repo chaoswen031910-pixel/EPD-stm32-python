@@ -2,51 +2,33 @@ import sys
 import os
 import json
 import re
-import serial
-import serial.tools.list_ports
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import QObject, QThread, pyqtSignal, QEventLoop, QTimer
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-import shutil  # <-- 新增导入，用于复制文件夹
 
 from ui_main_window import Ui_MainWindow
 import shutil
 from workers.serial_worker import SerialWorker
 from script_executor import ScriptExecutor
-from waveform_editor import WaveformEditorDialog
+
 from image_processor import ImageProcessor
 from code_generator import DriverCodeGenerator
-from user_guide_dialog import UserGuideDialog
+from dialogs.user_guide_dialog import UserGuideDialog
 import utils
 
-from workers.display_worker import DisplayWorker  # <-- [ 新增 ] 导入我们刚创建的类
-from workers.multi_image_worker import MultiImageDisplayWorker # <-- [ 新增 ] 导入新类
-from workers.lut_update_worker import LutUpdateWorker # <-- [ 新增 ] 导入新类
-from workers.device_scanner import DeviceScanner # <-- [ 新增 ] 导入新类
-from workers.flow_worker import FlowWorker # <-- [ 新增 ] 导入新类
+from workers.display_worker import DisplayWorker 
+from workers.multi_image_worker import MultiImageDisplayWorker 
+from workers.lut_update_worker import LutUpdateWorker 
+from workers.device_scanner import DeviceScanner 
+from workers.flow_worker import FlowWorker
 from workers.serial_worker import SerialWorker
 
 
-from dialogs.code_gen_dialog import CodeGenOptionsDialog # <-- [ 新增 ] 导入新对话框
+from dialogs.code_gen_dialog import CodeGenOptionsDialog 
+from dialogs.user_guide_dialog import UserGuideDialog 
 
+from waveform_editor_tool.waveform_editor import WaveformEditorDialog
 
-
-
-
-# def get_base_path():
-#     """获取基础路径，兼容开发环境和打包后的环境"""
-#     base_path = "" # 初始化
-#     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-#         # 如果是打包后的环境 (PyInstaller)
-#         base_path = os.path.dirname(sys.executable)
-#         #print(f"--- DEBUG: Running in bundled mode. sys.executable: {sys.executable}") # 调试信息
-#     else:
-#         # 如果是开发环境 (直接运行 .py)
-#         base_path = os.path.dirname(os.path.abspath(__file__))
-#         #print(f"--- DEBUG: Running in development mode. __file__: {__file__}") # 调试信息
-        
-#     #print(f"--- DEBUG: get_base_path() determined base_path: {base_path}") # 调试信息
-#     return base_path
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
