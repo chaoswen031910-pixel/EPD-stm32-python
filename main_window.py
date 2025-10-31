@@ -11,7 +11,7 @@ import shutil  # <-- 新增导入，用于复制文件夹
 
 from ui_main_window import Ui_MainWindow
 import shutil
-from serial_worker import SerialWorker
+from workers.serial_worker import SerialWorker
 from script_executor import ScriptExecutor
 from waveform_editor import WaveformEditorDialog
 from image_processor import ImageProcessor
@@ -24,59 +24,29 @@ from workers.multi_image_worker import MultiImageDisplayWorker # <-- [ 新增 ] 
 from workers.lut_update_worker import LutUpdateWorker # <-- [ 新增 ] 导入新类
 from workers.device_scanner import DeviceScanner # <-- [ 新增 ] 导入新类
 from workers.flow_worker import FlowWorker # <-- [ 新增 ] 导入新类
+from workers.serial_worker import SerialWorker
 
 
-class CodeGenOptionsDialog(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setWindowTitle("选择要生成的代码部分")
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.options = {
-            'reset': QtWidgets.QCheckBox("硬件复位 (Hardware_Reset)"),
-            'init': QtWidgets.QCheckBox("IC初始化 (..._Init)"),
-            'lut': QtWidgets.QCheckBox("波形加载 (Lut_Load)"),
-            'display': QtWidgets.QCheckBox("刷图函数 (Dis_Pic, Display_Update)"),
-            'sleep': QtWidgets.QCheckBox("休眠函数 (EPD_Sleep)"),
-        }
-        self.options['init'].setChecked(True)
-        group_box = QtWidgets.QGroupBox("勾选需要生成的函数:")
-        group_layout = QtWidgets.QVBoxLayout(group_box)
-        for key in self.options:
-            group_layout.addWidget(self.options[key])
-        self.layout.addWidget(group_box)
-        button_layout = QtWidgets.QHBoxLayout()
-        select_all_btn = QtWidgets.QPushButton("全选")
-        select_all_btn.clicked.connect(self.select_all)
-        self.generate_btn = QtWidgets.QPushButton("生成代码")
-        self.generate_btn.clicked.connect(self.accept)
-        button_layout.addWidget(select_all_btn)
-        button_layout.addStretch()
-        button_layout.addWidget(self.generate_btn)
-        self.layout.addLayout(button_layout)
-
-    def select_all(self):
-        for checkbox in self.options.values():
-            checkbox.setChecked(True)
-
-    def get_selected_parts(self):
-        return [key for key, checkbox in self.options.items() if checkbox.isChecked()]
+from dialogs.code_gen_dialog import CodeGenOptionsDialog # <-- [ 新增 ] 导入新对话框
 
 
 
-def get_base_path():
-    """获取基础路径，兼容开发环境和打包后的环境"""
-    base_path = "" # 初始化
-    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-        # 如果是打包后的环境 (PyInstaller)
-        base_path = os.path.dirname(sys.executable)
-        #print(f"--- DEBUG: Running in bundled mode. sys.executable: {sys.executable}") # 调试信息
-    else:
-        # 如果是开发环境 (直接运行 .py)
-        base_path = os.path.dirname(os.path.abspath(__file__))
-        #print(f"--- DEBUG: Running in development mode. __file__: {__file__}") # 调试信息
+
+
+# def get_base_path():
+#     """获取基础路径，兼容开发环境和打包后的环境"""
+#     base_path = "" # 初始化
+#     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+#         # 如果是打包后的环境 (PyInstaller)
+#         base_path = os.path.dirname(sys.executable)
+#         #print(f"--- DEBUG: Running in bundled mode. sys.executable: {sys.executable}") # 调试信息
+#     else:
+#         # 如果是开发环境 (直接运行 .py)
+#         base_path = os.path.dirname(os.path.abspath(__file__))
+#         #print(f"--- DEBUG: Running in development mode. __file__: {__file__}") # 调试信息
         
-    #print(f"--- DEBUG: get_base_path() determined base_path: {base_path}") # 调试信息
-    return base_path
+#     #print(f"--- DEBUG: get_base_path() determined base_path: {base_path}") # 调试信息
+#     return base_path
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
