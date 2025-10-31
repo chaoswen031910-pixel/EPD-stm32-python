@@ -5,11 +5,11 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal, QEventLoop, QTimer
 # 导入 ScriptExecutor，它在父目录中
 # 我们需要确保 Python 能找到它
 try:
-    from script_executor import ScriptExecutor
+    from services.script_executor import ScriptExecutor
 except ImportError:
     # 如果直接运行或导入时找不到，则动态添加父目录
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from script_executor import ScriptExecutor
+    from services.script_executor import ScriptExecutor
 
 class DisplayWorker(QObject):
     finished = pyqtSignal(bool, str)

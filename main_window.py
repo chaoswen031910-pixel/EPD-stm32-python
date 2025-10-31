@@ -8,12 +8,7 @@ from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 
 from ui_main_window import Ui_MainWindow
 import shutil
-from workers.serial_worker import SerialWorker
-from script_executor import ScriptExecutor
 
-from image_processor import ImageProcessor
-from code_generator import DriverCodeGenerator
-from dialogs.user_guide_dialog import UserGuideDialog
 import utils
 
 from workers.display_worker import DisplayWorker 
@@ -23,12 +18,14 @@ from workers.device_scanner import DeviceScanner
 from workers.flow_worker import FlowWorker
 from workers.serial_worker import SerialWorker
 
-
 from dialogs.code_gen_dialog import CodeGenOptionsDialog 
 from dialogs.user_guide_dialog import UserGuideDialog 
 
 from waveform_editor_tool.waveform_editor import WaveformEditorDialog
 
+from services.script_executor import ScriptExecutor
+from services.image_processor import ImageProcessor
+from services.code_generator import DriverCodeGenerator
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
