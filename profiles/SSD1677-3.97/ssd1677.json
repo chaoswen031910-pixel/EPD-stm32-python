@@ -16,12 +16,16 @@
             "variable": "DU_300ms",
             "mode": "partial"
         },
-        "gray4": {
-            "variable": "lut_4GRAY_update",
-            "mode": "4gray"
-        },
         "300ms4Gray": {
             "variable": "lut_300ms4Gray_112bytes",
+            "mode": "4gray"
+        },
+        "J": {
+            "variable": "lut_J_112bytes",
+            "mode": "4gray"
+        },
+        "DB": {
+            "variable": "lut_DB_112bytes",
             "mode": "4gray"
         }
     },

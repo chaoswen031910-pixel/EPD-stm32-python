@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.refresh_btn = QtWidgets.QPushButton("刷新/扫描设备")
         self.baud_combo = QtWidgets.QComboBox()
         self.baud_combo.addItems(["9600", "115200", "921600"])
-        self.baud_combo.setCurrentText("115200")
+        self.baud_combo.setCurrentText("921600")
         self.open_btn = QtWidgets.QPushButton("连接设备")
         self.close_btn = QtWidgets.QPushButton("断开连接")
         self.close_btn.setEnabled(False)

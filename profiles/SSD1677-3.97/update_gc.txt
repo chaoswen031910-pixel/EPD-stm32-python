@@ -19,7 +19,7 @@ SEND_IMAGE_DATA
 
 # 步骤 5 & 6: 触发屏幕物理刷新
 CMD 0x22
-DATA 0xF7
+DATA 0xCF
 
 CMD 0x20
 WAIT_BUSY_SSD

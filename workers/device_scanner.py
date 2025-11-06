@@ -15,7 +15,7 @@ class DeviceScanner(QObject):
         for port_info in ports:
             port_name = port_info.device
             try:
-                with serial.Serial(port_name, 115200, timeout=0.2) as ser:
+                with serial.Serial(port_name, 921600, timeout=0.2) as ser:
                     ser.write(identify_frame); response = ser.readline()
                     if expected_response in response: found_port = port_name; break
             except (OSError, serial.SerialException): continue
