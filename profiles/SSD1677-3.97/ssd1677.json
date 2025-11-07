@@ -27,6 +27,10 @@
         "DB": {
             "variable": "lut_DB_112bytes",
             "mode": "4gray"
+        },
+        "du": {
+            "variable": "lut_du_112bytes",
+            "mode": "gc"
         }
     },
     "lut_structure": {
